@@ -20,7 +20,11 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\ButtonAction;
+use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
@@ -129,6 +133,9 @@ class FeatureFlagResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                BooleanColumn::make('enabled')
+                    ->action(fn ($record) => $record->update(['enabled' => ! $record->enabled]))
+                    ->sortable(),
                 TextColumn::make('flaggable_type')
                     ->label('Resource Type')
                     ->formatStateUsing(function (?string $state, FeatureFlag $record) {
@@ -165,7 +172,17 @@ class FeatureFlagResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                    ->options([
+                        'enabled' => 'Enabled',
+                        'disabled' => 'Disabled',
+                    ])
+                    ->default('all')
+                    ->query(function (Builder $query, array $data) {
+                        $query
+                            ->when($data['value'] === 'enabled', fn ($query) => $query->where('enabled', true))
+                            ->when($data['value'] === 'disabled', fn ($query) => $query->where('enabled', false));
+                    }),
             ]);
     }
 
