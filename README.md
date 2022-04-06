@@ -21,7 +21,7 @@ You should also follow the [installation instructions for underlying package](ht
 
 Once installed, this package will register a new "Features" resource.
 
-![art/empty-resource.png](Empty resource)
+![Empty resource](art/empty-resource.png)
 
 ## Testing
 
