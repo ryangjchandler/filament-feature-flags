@@ -29,9 +29,39 @@ To add a new flag, click the "Add Feature" button and you'll be presented with a
 
 ![Empty create form](art/create-form.png)
 
-The only _required_ field in the form is the "Name" field. The "Description" field is optional and only serves as metadata for users.
+The _only_ required field in the form is the "Name" field. The "Description" field is optional and only serves as metadata for users.
 
 You can toggle the value of flag by switching the toggle input labelled "Enabled".
+
+#### Scoping a flag to a resource / model
+
+> You should follow the [documentation on setting up models for feature flags](https://github.com/ryangjchandler/laravel-feature-flags#model-flags) before continuing.
+
+Being by implementing the `RyanChandler\FilamentFeatureFlags\Contracts\FlaggableResource` interface on your chosen `Resource` class.
+
+```php
+use RyanChandler\FilamentFeatureFlags\Contracts\FlaggableResource;
+
+class CustomerResource extends Resource implements FlaggableResource
+{
+    public static function getFlaggableRecordDisplayColumn(): string
+    {
+        return 'name';
+    }
+}
+```
+
+The `getFlaggableRecordDisplayColumn()` method should return the name of the column you'd like to display when searching for your flaggable records.
+
+Now that you've implemented the `FlaggableResource` interface, you should be able to see your resource show up as an option in the "Resource Type" field.
+
+![Resource type](art/resource-type.png)
+
+If you select the resource, you'll see a new "Resource" field appear underneath. This field is a searchable `Select` field and can be used to search for and choose the record this flag is associated with.
+
+![Resource searching](art/resource-searching.png)
+
+Once you've selected a record, save the feature flag and it will be associated with it.
 
 ## Testing
 
