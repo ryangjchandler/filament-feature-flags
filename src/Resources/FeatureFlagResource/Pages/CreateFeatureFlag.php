@@ -2,8 +2,8 @@
 
 namespace RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\Pages;
 
-use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource;
 use Filament\Resources\Pages\CreateRecord;
+use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource;
 
 class CreateFeatureFlag extends CreateRecord
 {

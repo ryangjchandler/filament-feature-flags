@@ -2,8 +2,8 @@
 
 namespace RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\Pages;
 
-use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource;
 use Filament\Resources\Pages\EditRecord;
+use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource;
 
 class EditFeatureFlag extends EditRecord
 {

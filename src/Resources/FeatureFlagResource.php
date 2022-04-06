@@ -4,10 +4,6 @@ namespace RyanChandler\FilamentFeatureFlags\Resources;
 
 use Closure;
 use Filament\Facades\Filament;
-use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\Pages;
-use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\RelationManagers;
-use RyanChandler\LaravelFeatureFlags\Models\FeatureFlag;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -19,17 +15,15 @@ use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
-use Filament\Tables\Actions\ButtonAction;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\HtmlString;
-use Illuminate\Support\Str;
 use RyanChandler\FilamentFeatureFlags\Contracts\FlaggableResource;
+use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\Pages;
 use RyanChandler\LaravelFeatureFlags\Models\Contracts\HasFeatures;
+use RyanChandler\LaravelFeatureFlags\Models\FeatureFlag;
 
 class FeatureFlagResource extends Resource
 {
@@ -65,6 +59,7 @@ class FeatureFlagResource extends Resource
                                         })
                                         ->mapWithKeys(function (string $resource) {
                                             $model = new ($resource::getModel());
+
                                             return [
                                                 $resource => class_basename($model),
                                             ];
@@ -84,12 +79,12 @@ class FeatureFlagResource extends Resource
 
                                     $model = $state::getModel();
 
-                                    return (new $model)->getMorphClass();
+                                    return (new $model())->getMorphClass();
                                 })
                                 ->reactive(),
                             Select::make('flaggable_id')
                                 ->label('Resource')
-                                ->visible(fn ($get) => !! $get('flaggable_type'))
+                                ->visible(fn ($get) => ! ! $get('flaggable_type'))
                                 ->searchable()
                                 ->getSearchResultsUsing(function (Closure $get, ?string $query) {
                                     $resource = $get('flaggable_type');
@@ -122,7 +117,7 @@ class FeatureFlagResource extends Resource
                         ->label('Updated at')
                         ->content(fn (?FeatureFlag $record) => $record ? $record->updated_at->diffForHumans() : new HtmlString('&mdash;')),
                 ])
-                    ->columnSpan(2)
+                    ->columnSpan(2),
             ])
             ->columns(6);
     }
@@ -160,7 +155,7 @@ class FeatureFlagResource extends Resource
                             ->first(function (string $resource) use ($record) {
                                 $model = $resource::getModel();
 
-                                return (new $model)->getMorphClass() === $record->flaggable::class;
+                                return (new $model())->getMorphClass() === $record->flaggable::class;
                             });
 
                         $displayColumn = $resource::getFlaggableRecordDisplayColumn();
