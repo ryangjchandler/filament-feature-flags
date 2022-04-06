@@ -23,6 +23,16 @@ Once installed, this package will register a new "Features" resource.
 
 ![Empty resource](art/empty-resource.png)
 
+### Adding a new flag
+
+To add a new flag, click the "Add Feature" button and you'll be presented with a form.
+
+![Empty create form](art/create-form.png)
+
+The only _required_ field in the form is the "Name" field. The "Description" field is optional and only serves as metadata for users.
+
+You can toggle the value of flag by switching the toggle input labelled "Enabled".
+
 ## Testing
 
 ```bash
