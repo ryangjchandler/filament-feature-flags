@@ -5,48 +5,23 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/filament-feature-flags/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ryangjchandler/filament-feature-flags/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/filament-feature-flags.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/filament-feature-flags)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This packages provide a graphical wrapper around [ryangjchandler/laravel-feature-flags](https://github.com/ryangjchandler/laravel-feature-flags).
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require ryangjchandler/filament-feature-flags
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-feature-flags-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-feature-flags-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-feature-flags-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
+You should also follow the [installation instructions for underlying package](https://github.com/ryangjchandler/laravel-feature-flags#installation);
 
 ## Usage
 
-```php
-$filament-feature-flags = new RyanChandler\FilamentFeatureFlags();
-echo $filament-feature-flags->echoPhrase('Hello, RyanChandler!');
-```
+Once installed, this package will register a new "Features" resource.
+
+![art/empty-resource.png](Empty resource)
 
 ## Testing
 
