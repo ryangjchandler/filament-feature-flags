@@ -67,7 +67,7 @@ Once you've selected a record, save the feature flag and it will be associated w
 
 The table will show all flags, including flags associated with models / resources.
 
-!(Table overview)[art/table.png]
+![Table overview](art/table.png)
 
 ## Testing
 
