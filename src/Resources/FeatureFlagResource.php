@@ -134,7 +134,7 @@ class FeatureFlagResource extends Resource
                 TextColumn::make('name')
                     ->searchable(),
                 BooleanColumn::make('enabled')
-                    ->action(fn ($record) => $record->update(['enabled' => ! $record->enabled]))
+                    ->action(fn (FeatureFlag $record) => $record->update(['enabled' => ! $record->enabled]))
                     ->sortable(),
                 TextColumn::make('flaggable_type')
                     ->label('Resource Type')

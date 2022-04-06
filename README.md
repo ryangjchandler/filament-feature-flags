@@ -69,6 +69,8 @@ The table will show all flags, including flags associated with models / resource
 
 ![Table overview](art/table.png)
 
+The "Name" field is searchable and the "Enabled" column can be clicked to toggle the flag.
+
 ## Testing
 
 ```bash
