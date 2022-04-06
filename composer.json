@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ryangjchandler/filament-feature-flags",
+    "description": "Control your Laravel feature flags through a clean Filament interface.",
     "keywords": [
-        ":vendor_name",
+        "ryangjchandler",
         "laravel",
-        ":package_slug"
+        "filament-feature-flags"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ryangjchandler/filament-feature-flags",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ryan Chandler",
+            "email": "support@ryangjchandler.co.uk",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "RyanChandler\\FilamentFeatureFlags\\": "src",
+            "RyanChandler\\FilamentFeatureFlags\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "RyanChandler\\FilamentFeatureFlags\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -55,10 +55,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "RyanChandler\\FilamentFeatureFlags\\FilamentFeatureFlagsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentFeatureFlags": "RyanChandler\\FilamentFeatureFlags\\Facades\\FilamentFeatureFlags"
             }
         }
     },

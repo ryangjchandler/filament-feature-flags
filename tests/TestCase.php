@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace RyanChandler\FilamentFeatureFlags\Tests;
 
 use Filament\FilamentServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
+use RyanChandler\FilamentFeatureFlags\FilamentFeatureFlagsServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -15,7 +15,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'RyanChandler\\FilamentFeatureFlags\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -24,7 +24,7 @@ class TestCase extends Orchestra
         return [
             LivewireServiceProvider::class,
             FilamentServiceProvider::class,
-            SkeletonServiceProvider::class,
+            FilamentFeatureFlagsServiceProvider::class,
         ];
     }
 
@@ -33,7 +33,7 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
         /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_filament-feature-flags_table.php.stub';
         $migration->up();
         */
     }
