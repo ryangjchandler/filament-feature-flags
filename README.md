@@ -63,6 +63,12 @@ If you select the resource, you'll see a new "Resource" field appear underneath.
 
 Once you've selected a record, save the feature flag and it will be associated with it.
 
+### Table
+
+The table will show all flags, including flags associated with models / resources.
+
+!(Table overview)[art/table.png]
+
 ## Testing
 
 ```bash
