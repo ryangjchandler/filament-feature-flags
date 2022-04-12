@@ -148,7 +148,7 @@ class FeatureFlagResource extends Resource
                     }),
                 TextColumn::make('flaggable_id')
                     ->label('Resource')
-                    ->formatStateUsing(function (?int $state, FeatureFlag $record) {
+                    ->formatStateUsing(function (int|string|null $state, FeatureFlag $record) {
                         if (! $state || ! $record->flaggable_type) {
                             return new HtmlString('&mdash;');
                         }
