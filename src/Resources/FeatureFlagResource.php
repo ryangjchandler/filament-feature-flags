@@ -90,7 +90,7 @@ class FeatureFlagResource extends Resource
                             Select::make('flaggable_id')
                                 ->label('Resource')
                                 ->visible(fn ($get) => ! ! $get('flaggable_type'))
-                                ->required(fn ($get) => $get('flaggable_type'))
+                                ->required(fn ($get) => ! ! $get('flaggable_type'))
                                 ->searchable()
                                 ->getSearchResultsUsing(function (Closure $get, ?string $query) {
                                     $resource = $get('flaggable_type');
