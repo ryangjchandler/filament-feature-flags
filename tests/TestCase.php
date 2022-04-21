@@ -2,13 +2,12 @@
 
 namespace RyanChandler\FilamentFeatureFlags\Tests;
 
-use Filament\Facades\Filament;
-use Filament\Tables\TablesServiceProvider;
-use Illuminate\Support\Facades\Artisan;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
+use Filament\Facades\Filament;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
+use Filament\Tables\TablesServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;

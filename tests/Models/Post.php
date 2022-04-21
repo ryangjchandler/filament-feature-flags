@@ -2,16 +2,17 @@
 
 namespace RyanChandler\FilamentFeatureFlags\Tests\Models;
 
-use Ramsey\Uuid\Uuid;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 use RyanChandler\FilamentFeatureFlags\Tests\Database\Factories\PostFactory;
 use RyanChandler\LaravelFeatureFlags\Models\Concerns\WithFeatures;
 use RyanChandler\LaravelFeatureFlags\Models\Contracts\HasFeatures;
 
 class Post extends Model implements HasFeatures
 {
-    use HasFactory, WithFeatures;
+    use HasFactory;
+    use WithFeatures;
 
     protected $table = 'filament_feature_flags_posts';
 

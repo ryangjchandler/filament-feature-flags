@@ -1,13 +1,13 @@
 <?php
 
 use Livewire\Livewire;
+use function Pest\Laravel\assertDatabaseHas;
 use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\Pages\CreateFeatureFlag;
 use RyanChandler\FilamentFeatureFlags\Resources\FeatureFlagResource\Pages\ListFeatureFlags;
 use RyanChandler\FilamentFeatureFlags\Tests\Models\Post;
 use RyanChandler\FilamentFeatureFlags\Tests\Models\Team;
-use RyanChandler\LaravelFeatureFlags\Models\FeatureFlag;
 
-use function Pest\Laravel\assertDatabaseHas;
+use RyanChandler\LaravelFeatureFlags\Models\FeatureFlag;
 
 it('can be mounted', function () {
     Livewire::test(CreateFeatureFlag::class)
