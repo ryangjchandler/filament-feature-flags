@@ -37,7 +37,7 @@
     "autoload": {
         "psr-4": {
             "RyanChandler\\FilamentFeatureFlags\\": "src",
-            "RyanChandler\\FilamentFeatureFlags\\Database\\Factories\\": "database/factories"
+            "RyanChandler\\FilamentFeatureFlags\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "autoload-dev": {
