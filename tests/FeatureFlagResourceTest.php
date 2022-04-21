@@ -7,6 +7,8 @@ use RyanChandler\FilamentFeatureFlags\Tests\Models\Post;
 use RyanChandler\FilamentFeatureFlags\Tests\Models\Team;
 use RyanChandler\LaravelFeatureFlags\Models\FeatureFlag;
 
+use function Pest\Laravel\assertDatabaseHas;
+
 it('can be mounted', function () {
     Livewire::test(CreateFeatureFlag::class)
         ->assertSuccessful();
@@ -19,6 +21,12 @@ it('works with string key models', function () {
         ->set('data.flaggable_id', 'a1f43340-9fc9-43d5-8519-139c4a4559a5')
         ->call('create')
         ->assertHasNoErrors();
+
+    assertDatabaseHas(FeatureFlag::class, [
+        'name' => 'test',
+        'flaggable_type' => Team::class,
+        'flaggable_id' => 'a1f43340-9fc9-43d5-8519-139c4a4559a5',
+    ]);
 });
 
 it('works with integer key models', function () {
@@ -28,6 +36,12 @@ it('works with integer key models', function () {
         ->set('data.flaggable_id', 123)
         ->call('create')
         ->assertHasNoErrors();
+
+    assertDatabaseHas(FeatureFlag::class, [
+        'name' => 'test',
+        'flaggable_type' => Team::class,
+        'flaggable_id' => 123,
+    ]);
 });
 
 it('shows features with string type keys', function () {
@@ -41,6 +55,8 @@ it('shows features with string type keys', function () {
     ])->create();
 
     Livewire::test(ListFeatureFlags::class)
+        ->assertSee('Testflag')
+        ->assertSee('Post')
         ->assertSuccessful();
 });
 
@@ -55,5 +71,7 @@ it('shows features with integer type keys', function () {
     ])->create();
 
     Livewire::test(ListFeatureFlags::class)
+        ->assertSee('Testflag')
+        ->assertSee('Team')
         ->assertSuccessful();
 });
