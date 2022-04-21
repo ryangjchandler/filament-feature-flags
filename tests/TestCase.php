@@ -50,11 +50,8 @@ class TestCase extends Orchestra
         $migration = include __DIR__.'/database/migrations/create_test_tables.php.stub';
         $migration->up();
 
-        Artisan::call('vendor:publish', [
-            '--tag' => 'feature-flags-migrations',
-        ]);
-
-        Artisan::call('migrate');
+        $featureFlagsMigration = include __DIR__ . '/../vendor/ryangjchandler/laravel-feature-flags/database/migrations/create_feature_flags_table.php.stub';
+        $featureFlagsMigration->up();
 
         Filament::registerResources([
             PostResource::class,
