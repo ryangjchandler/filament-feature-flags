@@ -40,9 +40,8 @@ it('shows features with string type keys', function () {
         'flaggable_id' => $post->id,
     ])->create();
 
-    //
     Livewire::test(ListFeatureFlags::class)
-        ->assertHasNoErrors();
+        ->assertSuccessful();
 });
 
 it('shows features with integer type keys', function () {
@@ -55,7 +54,6 @@ it('shows features with integer type keys', function () {
         'flaggable_id' => $team->id,
     ])->create();
 
-    //
     Livewire::test(ListFeatureFlags::class)
-        ->assertHasNoErrors();
+        ->assertSuccessful();
 });
