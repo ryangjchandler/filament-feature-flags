@@ -133,7 +133,8 @@ class FeatureFlagResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 BooleanColumn::make('enabled')
                     ->action(fn (FeatureFlag $record) => $record->update(['enabled' => ! $record->enabled]))
                     ->sortable(),
@@ -184,7 +185,8 @@ class FeatureFlagResource extends Resource
                             ->when($data['value'] === 'enabled', fn ($query) => $query->where('enabled', true))
                             ->when($data['value'] === 'disabled', fn ($query) => $query->where('enabled', false));
                     }),
-            ]);
+            ])
+            ->defaultSort('name');
     }
 
     public static function getRelations(): array
