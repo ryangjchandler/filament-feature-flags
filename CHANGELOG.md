@@ -2,6 +2,19 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## v1.0.2 - 2022-04-29
+
+## What's Changed
+
+- build(deps): bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 by @dependabot in https://github.com/ryangjchandler/filament-feature-flags/pull/7
+- Make names sortable by @SebastiaanKloos in https://github.com/ryangjchandler/filament-feature-flags/pull/9
+
+## New Contributors
+
+- @dependabot made their first contribution in https://github.com/ryangjchandler/filament-feature-flags/pull/7
+
+**Full Changelog**: https://github.com/ryangjchandler/filament-feature-flags/compare/v1.0.1...v1.0.2
+
 ## v1.0.1 - 2022-04-21
 
 ## What's Changed
