@@ -2,6 +2,14 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## v1.0.3 - 2022-06-07
+
+### What's Changed
+
+- When deleting the flaggable record, the feature flag list page breaks by @SebastiaanKloos in https://github.com/ryangjchandler/filament-feature-flags/pull/10
+
+**Full Changelog**: https://github.com/ryangjchandler/filament-feature-flags/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2022-04-29
 
 ## What's Changed
