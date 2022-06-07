@@ -141,7 +141,7 @@ class FeatureFlagResource extends Resource
                 TextColumn::make('flaggable_type')
                     ->label('Resource Type')
                     ->formatStateUsing(function (?string $state, FeatureFlag $record) {
-                        if (! $state) {
+                        if (! $state || ! $record->flaggable) {
                             return new HtmlString('&mdash;');
                         }
 
@@ -150,7 +150,7 @@ class FeatureFlagResource extends Resource
                 TextColumn::make('flaggable_id')
                     ->label('Resource')
                     ->formatStateUsing(function (int|string|null $state, FeatureFlag $record) {
-                        if (! $state || ! $record->flaggable_type) {
+                        if (! $state || ! $record->flaggable_type || ! $record->flaggable) {
                             return new HtmlString('&mdash;');
                         }
 
